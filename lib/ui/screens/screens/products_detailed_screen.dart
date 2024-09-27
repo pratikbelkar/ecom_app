@@ -1,6 +1,7 @@
 import 'package:ecom_app/data/products.dart';
 import 'package:ecom_app/providers/cart_providers.dart';
 import 'package:ecom_app/providers/products_from_id_future_Provider.dart';
+import 'package:ecom_app/repo/hiveRepo.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,8 +38,17 @@ class ProductsDetailedScreen extends ConsumerWidget {
               ),
               Text(Products.price.toString()),
               ElevatedButton(
-                onPressed: () {
-                  ref.read(cartProviders.notifier).addProductToCart(Products);
+                onPressed: () async {
+                  await ref
+                      .read(hiveProvider)
+                      .addProductsToList(Products)
+                      .then((value) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('products added in cart sucessfully')));
+                  }).catchError((e) {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('$e')));
+                  });
                 },
                 child: const Text('Add to cart'),
               ),

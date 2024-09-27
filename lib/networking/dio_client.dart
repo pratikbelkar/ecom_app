@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:ecom_app/networking/api_endpoints.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,9 +20,9 @@ class DioClient {
       // ignore: non_constant_identifier_names
       final Response =
           await _dio.get(endPoint, queryParameters: queryparameters);
-      log(
-        Response.data.toString(),
-      );
+      // log(
+      //   Response.data.toString(),
+      // );
       return Response;
     } catch (e) {
       return Future.error(e);
@@ -34,7 +33,7 @@ class DioClient {
     try {
       // ignore: non_constant_identifier_names
       final Response = await _dio.post(endPoint, data: body);
-      log(Response.data.toString());
+
       return Response;
     } catch (e) {
       return Future.error(e);

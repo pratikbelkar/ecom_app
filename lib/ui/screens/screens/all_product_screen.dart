@@ -1,6 +1,7 @@
 import 'package:ecom_app/providers/category_provider.dart';
 import 'package:ecom_app/providers/products_providers.dart';
 import 'package:ecom_app/providers/selected_categeory.dart';
+import 'package:ecom_app/providers/theme_provider.dart';
 import 'package:ecom_app/ui/screens/screens/cart_screem.dart';
 import 'package:ecom_app/ui/screens/screens/products_detailed_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +22,22 @@ class AllProductScreen extends ConsumerWidget {
           title: const Center(
             child: Padding(
               padding: EdgeInsets.only(left: 50),
-              child: Text(
-                'All Product',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 50),
+                  child: Text(
+                    'All Product',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
             ),
           ),
+          leading: IconButton(
+              onPressed: () {
+                ref.read(themeProvider.notifier).toggleTheme();
+              },
+              icon: Icon(Icons.light_mode)),
           actions: [
             IconButton(
               onPressed: () {
@@ -58,10 +69,11 @@ class AllProductScreen extends ConsumerWidget {
                       },
                       child: Center(
                         child: Card(
+                          borderOnForeground: false,
                           color:
                               categoryNotifier[index].name == selectedNotifier
                                   ? Colors.red
-                                  : Colors.transparent,
+                                  : Colors.white,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(categoryNotifier[index].name!,
