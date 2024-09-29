@@ -35,12 +35,17 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.teal,
-      body: Center(
-        child: CircularProgressIndicator(
-          color: Colors.white,
-        ),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('images/ecom.jpg', fit: BoxFit.fitWidth),
+          Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -37,7 +37,7 @@ class AllProductScreen extends ConsumerWidget {
               onPressed: () {
                 ref.read(themeProvider.notifier).toggleTheme();
               },
-              icon: Icon(Icons.light_mode)),
+              icon: const Icon(Icons.light_mode)),
           actions: [
             IconButton(
               onPressed: () {
@@ -72,7 +72,7 @@ class AllProductScreen extends ConsumerWidget {
                           borderOnForeground: false,
                           color:
                               categoryNotifier[index].name == selectedNotifier
-                                  ? Colors.red
+                                  ? Colors.blue
                                   : Colors.white,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -91,7 +91,7 @@ class AllProductScreen extends ConsumerWidget {
               ),
             ),
             ProductsNotifier.isLoading
-                ? const Center(child: CircularProgressIndicator())
+                ? const Center(child: LinearProgressIndicator())
                 : ProductsNotifier.allProducts.isEmpty
                     ? const Text('No Product Found')
                     : Expanded(

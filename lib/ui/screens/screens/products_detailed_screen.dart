@@ -1,5 +1,4 @@
 import 'package:ecom_app/data/products.dart';
-import 'package:ecom_app/providers/cart_providers.dart';
 import 'package:ecom_app/providers/products_from_id_future_Provider.dart';
 import 'package:ecom_app/repo/hiveRepo.dart';
 
@@ -46,8 +45,8 @@ class ProductsDetailedScreen extends ConsumerWidget {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('products added in cart sucessfully')));
                   }).catchError((e) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('$e')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('product aldredy added in a list')));
                   });
                 },
                 child: const Text('Add to cart'),

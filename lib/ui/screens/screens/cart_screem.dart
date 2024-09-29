@@ -1,5 +1,5 @@
 import 'package:ecom_app/data/products.dart';
-import 'package:ecom_app/providers/cart_providers.dart';
+
 import 'package:ecom_app/repo/hiveRepo.dart';
 
 import 'package:flutter/material.dart';
